@@ -1,0 +1,169 @@
+<div class="jumbotron text-center" *ngIf="project">
+    <h1>{{ project.name }}</h1>
+    
+    <div *ngIf="project.collab">
+        <h2>Collaborators</h2>
+        <div *ngFor="let collaborator of project.collaborators" style="font-size: 20px;">
+            {{ collaborator }}
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>Inspiration</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover inspiration
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                Telememe was created for
+                <a target="_blank" href="https://uncommonhacksspr16.devpost.com/">Uncommon Hacks 2016</a>
+                which was a meme themed hackathon. In the weeks approaching the hackathon, I saw a
+                <a target="_blank" href="https://www.youtube.com/watch?v=z6KmX_poEV8">video</a>
+                by <i>Tested</i> on youtube about creating a replica Ghostbusters trap. The main thing
+                that caught my attention from this build was their use of e-cigarettes and LEDs
+                to make a smoke effect. In the weeks leading up to the hackathon I learned how to achieve a
+                similar effect as I demonstrate in a
+                <a target="_blank" href="https://www.youtube.com/watch?v=Whq_FDJ89Lc">video</a>
+                on my youtube channel. The reason behind the Teletubby body was simply due to
+                the absurdness being appropriate for the hackathon that I was entering, and also the
+                idea of putting the e-cigarette in the antenna.
+            </p>
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin inspiraton
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie inspiration
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>Idea</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                We wanted the project to be a companion toy for young adults getting into making
+                memes. There would be two parts to this project, the first would be the companion
+                toy which would interact with the user. The second part of the project would be the
+                mobile app which would allow the user to create memes and send them to the companion
+                toy.
+            </p>
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>How it Works</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                The user must first download the Telememe app on their phone and connect to the
+                companion toy via bluetooth. Using the app, the user can generate a meme and send it
+                to the companion to be analyzed. Depending on if the meme was good or not the companion
+                will give the user a positive or negative response using its various methods of output.
+            </p>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/OXGvCnZ2xEU"></iframe> 
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>How it was Built</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                The app for generating and sending the memes was made using Android Studio. The companion
+                was built inside of a Teletubby costume for a child stretched around a protein powder
+                container. An Arduino was used to program the output from the companion. The e-cigarette
+                and air pump were controlled using a relay. Lights and buzzers were also connected to the
+                Arduino. The Arduino was connected to a bluetooth module that could recieve serial data from
+                the connected phone. Depending on the data from the phone, the companion would go through
+                a good or a bad output routine which consisted of blinking lights, buzzing a buzzer and
+                blinking LEDs.
+            </p>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/bdGhxkRYU3M"></iframe> 
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>Challenges</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                A challenge that we had with creating this project was being able to communicate with
+                the companion via bluetooth. The bluetooth module is pretty easy to set up with the Arduino,
+                but none of us had experience using bluetooth in an Android app. Eventually Mohsin and
+                Kelvin overcame this hurdle and we were able to connect the app to the companion.
+            </p>
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+
+    <div [ngSwitch]="project.projectName" class="report">
+        <h2>Future</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            <p>
+                There currently isn't any plan to expand on this project however we created a
+                fortune teller using many of the same parts for Uncommon Hacks 2017.
+            </p>
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+
+    <div *ngIf="project.hasPartsList" [ngSwitch]="project.projectName" class="report">
+        <h2>Parts List</h2>
+        <div *ngSwitchCase="'wifirover'">
+            wifirover idea
+        </div>
+        <div *ngSwitchCase="'telememe'">
+            telememe
+        </div>
+        <div *ngSwitchCase="'starcoin'">
+            starcoin idea
+        </div>
+        <div *ngSwitchCase="'killacalorie'">
+            killacalorie idea
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,11 @@
+img{
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.report{
+    text-align: left;
+}
+.report p{
+    font-size: 20px;
+}
