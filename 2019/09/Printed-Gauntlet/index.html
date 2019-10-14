@@ -1,0 +1,350 @@
+
+
+
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Micronote | Printed Gauntlet </title>
+    <meta name="theme-color" content="#222222"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap4.min.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/cache_clear.js?v=1"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+ </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="z-index: 10;">
+  <a class="navbar-brand" href="/" style="color: white">
+    Carlo Supina
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color: white">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/" style="color: white">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/" style="color: white">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos/" style="color: white">Videos</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            Open Rustbot
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/open_rustbot_book/index.html">Book</a>
+          </div>
+        </li>
+    </ul>
+</nav>
+
+
+    <div class="wrapper">
+      <div class="content">
+        <div class="container container-center">
+          <div class="row">
+            <div class="col-md-8 offset-md-1">
+              <div class="article">
+                <div class="card">
+                  <h1><a href="/2019/09/Printed-Gauntlet/">Printed Gauntlet</a></h1>
+                  <h3>Carlo Supina</h3>
+                  <div class="post-meta">
+                    <div class="post-time">
+                      <i class="fa fa-calendar-alt"></i>
+                      <time>06 Sep 2019</time>
+                    </div>
+                    <!--<ul>
+                      
+                        <li>3d-printer</li>
+                      
+                        <li>autodesk-inventor</li>
+                      
+                    </ul>-->
+                  </div>
+                  <div class="post-content">
+                    
+                    <h1 id="overview">Overview</h1>
+<p>The goal of this project was to create a wearable gauntlet made out of 3D printed parts that could be worn on someone’s hand.
+This gauntlet could serve as something to build other wearable tech off of, such as precision hand tracking to control something.</p>
+
+<p>This gauntlet should:</p>
+
+<ul>
+  <li>allow full range of motion</li>
+  <li>be comfortable</li>
+  <li>fit snugly</li>
+  <li>have plastic parts over critical areas/segments</li>
+</ul>
+
+<p>As you can see in the gif below. All of these goals were achieved.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+<iframe src="https://gfycat.com/ifr/weirdaggressivefruitfly" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</div>
+<p><br /></p>
+
+<h1 id="designing-a-finger">Designing a Finger</h1>
+
+<p>For this project I only designed three different fingers. This is due to the fact that the middle, pointer, and ring fingers are all very close in length.
+The main difference between them is where they are rooted on the hand. To get the measurements for the fingers I used a caliper to get the width of the widest part of the finger and added about 1 mm of tolerance. I also measured the distance joint to joint across the finger segment.</p>
+
+<p>I started by designing the middle segment of the middle finger. I did this because this segment’s joints are going to partially resemble both the top segment and bottom segment of the finger. You’ll see what I mean later. I came up with the model shown below for the middle segment.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/d9e55ef8adcb49069ad59a6af3554064/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<p>You can see that at one end where the joint would be, there are just holes. At the other end, the model gets slightly wider and there is a circular extrusion going inward. Each end of the middle finger segment is a different half of a single joint for connecting the different finger segments.</p>
+
+<p>Below is the end segment of the middle finger.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/679180d6d49c4190a53d1073967b2f67/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<p>This segment has a hole to interface with the circular excrusion in the segment above, creating a joint. It also has a rectangular hole for attaching elastic.</p>
+
+<p>Below is the root segment of the middle finger.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/875a66dea09043fead60b6175aba1af0/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<p>This segment has a circular extrusion to interface with the hole in the middle segment, creating a joint. It also has three rectangular holes, two of them serve the same purpose as in the segment above, for attaching elastic to hold the segment on the finger. The third rectangular hole on the tab coming of the bottom is for attaching elastic to connect it to the pieces of the gauntlet attached to the back of the hand.</p>
+
+<h1 id="designing-the-thumb">Designing the Thumb</h1>
+
+<p>Below are the two parts required for the thumb.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/074a079d20a247238e76b44c12973d59/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/0724d27645264119aa0b5ae73ee903d2/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<p>As you can see, it is very similar to the design of the fingers. The only different is that it has one less joint than the fingers.</p>
+
+<h1 id="back-of-the-hand">Back of the Hand</h1>
+
+<p>The back of the hand is made up of four different parts to allow for the user to comfortably move as they otherwise would normally. Each of the segments, shown below, are held together with 1 inch elastic attached through the long rectangular holes. The small rectangular holes attach to each of the fingers.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/020293c782cc44faa6082ce563ce51cf/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/69879efdf31946068b8ba833ea38b69a/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/015772c839704405995f04728a62db2a/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://sketchfab.com/models/bb318d67b12e4a84983903edd1ab389f/embed?autospin=0.2&amp;autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+<p><br /></p>
+
+<h1 id="putting-it-all-together">Putting it all Together</h1>
+
+<p>All that is left now is to assemble all of the pieces into the gauntlet. I sewed more 1 inch elastic to go around the palm of the hand and attached all of the assembled fingers to the “backhand” parts using 1/4 inch elastic. Pictures of the end result are below.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i></i></caption>
+<tr><td><img src="/img/gauntlet_front.jpg" alt="" /></td></tr>
+</table>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i></i></caption>
+<tr><td><img src="/img/gauntlet_back.jpg" alt="" /></td></tr>
+</table>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i></i></caption>
+<tr><td><img src="/img/gauntlet_fist.jpg" alt="" /></td></tr>
+</table>
+
+<h1 id="future">Future</h1>
+
+<p>I plan on improving on and making more of these. I’ll be sure to make a video further explaining the process when I do. I also wan’t to remake all of the source files using FreeCad instead of Inventor. Lastly I want to make a script to allow people to input the dimensions of their hand and have the program output the files designed for their size.</p>
+
+<p>In the meantime, if you want to print your own or modify the files, you can find them on <a href="https://grabcad.com/library/gauntlet-7/details?folder_id=6963400">GrabCad</a>.</p>
+
+                    
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 hidden-xs">
+              <div class="sidebar ">
+  <h2>Recent Posts</h2>
+  <ul>
+    
+    <li><a href="/2019/09/Printed-Gauntlet/">Printed Gauntlet</a></li>
+    
+    <li><a href="/2019/09/Space-Shooter-Game/">Space Shooter Game</a></li>
+    
+    <li><a href="/2019/05/Thotcon-0xA/">Thotcon 0xA</a></li>
+    
+    <li><a href="/2019/04/Infrared-Rover-Prototype/">Infrared Rover Prototype</a></li>
+    
+  </ul>
+</div>
+
+<div class="sidebar">
+  <h2>Tags</h2>
+  <ul class="sideBarTags fa-ul">
+    
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/3d-printer" data-toggle="tooltip" data-placement="right" title="1">
+        <span>3d-printer</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amethyst" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amethyst</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amg8833" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amg8833</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/autodesk-inventor" data-toggle="tooltip" data-placement="right" title="1">
+        <span>autodesk-inventor</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/badge" data-toggle="tooltip" data-placement="right" title="1">
+        <span>badge</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/convention" data-toggle="tooltip" data-placement="right" title="1">
+        <span>convention</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/game" data-toggle="tooltip" data-placement="right" title="1">
+        <span>game</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/infosec" data-toggle="tooltip" data-placement="right" title="1">
+        <span>infosec</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/l298n" data-toggle="tooltip" data-placement="right" title="1">
+        <span>l298n</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/motors" data-toggle="tooltip" data-placement="right" title="1">
+        <span>motors</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/rust" data-toggle="tooltip" data-placement="right" title="2">
+        <span>rust</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/st7735" data-toggle="tooltip" data-placement="right" title="1">
+        <span>st7735</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/stm32" data-toggle="tooltip" data-placement="right" title="1">
+        <span>stm32</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/xbee" data-toggle="tooltip" data-placement="right" title="1">
+        <span>xbee</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="footer-basic" style="padding: 30px 0; background-color: #292c2f;color: white;">
+        <footer>
+            <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+              <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-3x" style="padding: 0 10px;"></i></a>
+              <a href="https://www.youtube.com/channel/UC6cKxhWxtWCgKy9_-T8xJAg" style="color: white;"><i class="fab fa-youtube fa-3x" style="padding: 0 10px;"></i></a>
+              <i class="fab fa-linkedin fa-3x" style="padding: 0 10px;"></i>
+            </ul>
+        </footer>
+    </div>
+
+    </div>
+  </body>
+</html>

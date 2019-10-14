@@ -1,39 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-        <title>Carlo Supina</title>
+    <title></title>
+    <link rel="icon" type="image/png" href="/img/logo1.png">
+  </head>
+  <body style="background: black">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="z-index: 10;">
+  <a class="navbar-brand" href="/" style="color: white">
+    Carlo Supina
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color: white">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/" style="color: white">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/" style="color: white">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos/" style="color: white">Videos</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            Open Rustbot
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/open_rustbot_book/index.html">Book</a>
+          </div>
+        </li>
+    </ul>
+</nav>
 
-        <base href="/">
+    <br>
 
-        <!-- css -->
-        <!-- load bootstrap and some simple css -->
-        <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.css">
-        <style>svg {margin: auto; display: block;}</style>
-        <style>body { padding: 50px 0; }</style>
+<!--Portrait-->
 
-        <!-- js -->
-        <!-- load polyfills and angular dependencies -->
-        <script src="node_modules/core-js/client/shim.min.js"></script>
-        <script src="node_modules/zone.js/dist/zone.js"></script>
-        <script src="node_modules/reflect-metadata/Reflect.js"></script>
+<div class="testimonial-item mx-auto mb-5 mb-lg-0" align="middle">
+    <img class="img-fluid rounded-circle mb-3" src="../img/carlo-portrait.jpg" width="350px" height="350px" alt="">
+    <!--Name-->
+    <h1 style="color: white;">Carlo Supina</h1>
+    <!--Personal Links-->
+    <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+        <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-2x" style="padding: 0 10px;"></i></a>
+        <a href="https://twitter.com/carlosupina" style="color: white;"><i class="fab fa-twitter fa-2x" style="padding: 0 10px;"></i></a>
+        <a href="https://www.linkedin.com/in/carlo-supina-a10ba0108/" style="color: white;"><i class="fab fa-linkedin fa-2x" style="padding: 0 10px;"></i></a>
+    </ul>
+</div>
 
-        <!-- load our angular app with systemjs -->
-        <script src="node_modules/systemjs/dist/system.src.js"></script>
-        <script src="systemjs.config.js"></script>
-        <script>
-            System.import('app').catch(function(err) { console.error(err); });
-        </script>
-    </head>
+<br>
 
-    <div>
-        <script src="bundle.js"></script>
+<div class="container">
+  <div class="wrapper">
+    <div class="content">
+        <div class="container container-center">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="article">
+                        <div class="card" style="background-color: #39393a; box-shadow: 0 0 0 0, 0 8px 16px rgba(0, 0, 0, 0.2); border-radius: 6px; padding: 20px; font-size: 14px;">
+    
+                            <h2 style="color: #dddddd">About Me</h2>
+            
+                            <div class="post-content" style="color: #dddddd">
+
+                                <p>
+                                I created Micronote in the summer of 2018 with Shristi as a part of Purdue's Engineering
+                                accelerator program. At the end of the summer program we were convinced that Micronote
+                                was a good idea that was worth continuing. Since then, we have added Sabharsh and Holden to the team
+                                and have been working with students, high schools, and universities to develop engineering kits
+                                that teach electronics and programming.
+                                </p>
+
+                                <p>
+                                I went to high school in Minnesota and that is where I started really getting into programming and electronics.
+                                I was in science olympiad when I was introduced to Arduino and Raspberry Pi. My first attempt to use Arduino was a robot
+                                arm built from scratch for a science olympiad event. It was barely functional, but overall did not work very well.
+                                Looking back, I am disappointed in the lack of opportunities provided to learn programming and electronics to me while
+                                in high school in Minnesota. I was ready to learn, but I couldn't find a good starting point
+                                that was at my level.
+                                </p>
+
+                                <p>
+                                As a senior my family moved to the Dalarna region of Sweden for a year where I attended a music school.
+                                I had a tremendous amount of free time. Still wanting to learn electronics and programming skills, I decided
+                                to take matters into my own hands. While in Sweden I learned how to create 3D models using
+                                <a href="https://www.autodesk.com/products/3ds-max/overview">3DS Max</a> and I learned how to make games using
+                                the <a href="https://unity.com/">Unity game engine</a>. I didn't create any masterpieces in this time, but
+                                I did make a few games that I still show off to friends. I also learned many essential programming
+                                and CAD skills that I still use to this day.
+                                </p>
+                                
+                                <p>
+                                As a freshman in university I dedicated time every weekend to learning how to do something new with Arduino.
+                                Eventually I applied those skills to create a rather humorous project for Uncommon Hacks called
+                                <a href="https://devpost.com/software/telememe-meme-improvement-kit">"Telememe - Meme Improvement Bundle"</a>.
+                                I went to many more hackathons in the next two years where I learned more skills relating to electronics,
+                                web development, computer vision, game design, and blockchain.
+                                </p>
+
+                                <p>
+                                While in school I have had two internships. In the first, I helped a mentor of mine design small conveyor belts
+                                to sort small objects using machine vision and a variety of other sensors. I also programmed a hopper to dispense coins
+                                onto a conveyor belt at regular intervals. My second internship was with 3M where I used Xamarin to create cross platform
+                                mobile apps that had the ability to scan tags. Also at 3M, I worked with another group to kickstart 3M's presence
+                                in blockchain mentioned in the <a href="https://hbr.org/sponsored/2017/10/how-blockchain-will-accelerate-business-performance-and-power-the-smart-economy">Harvard Business Review</a>.
+                                Together our team submitted several patents for blockchain inventions, one of which is published and can be viewed
+                                <a href="https://patents.google.com/patent/WO2019030653A1/en?q=BLOCKCHAIN&oq=ARTICLE+ATTESTATION+SYSTEM+USING+BLOCKCHAIN">here</a>.
+                                </p>
+
+                                <p>
+                                In the summer of 2019 I started two open source projects. Both of these projects use the Rust programming language,
+                                a relatively new language which and specializes in memory safety. The first project is a space shooter game approiately named space_shooter_rs on
+                                <a href="https://github.com/amethyst/space_shooter_rs">Github</a>. You can read more about the game on its <a href="/2019/09/Space-Shooter-Game/">project page</a>.
+                                After a few months of continued development, I was approached
+                                by a representative of the Amethyst engine about making it an official showcase game for the engine. I glady
+                                <a href="https://amethyst.rs/posts/third-showcase-game-space-shooter">accepted</a>. This means that this game will be in the center
+                                of the Amethyst community for people to learn from, contribute to, and show off the Amethyst engine with.
+                                </p>
+
+                                <p>
+                                Games have been a huge part of my journey into programming. Often the first thing I do after learning a language
+                                is to create a game using as many aspects of the language as possible. Games were my starting point, but for others it could
+                                be something else. After starting Micronote, I have been finding myself everyday to be looking for ways to help people of all ages find their starting point into the amazing world of programming and
+                                electronics.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<br>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+        <div class="footer-basic" style="padding: 30px 0; background-color: #292c2f;color: white;">
+        <footer>
+            <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+              <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-3x" style="padding: 0 10px;"></i></a>
+              <a href="https://www.youtube.com/channel/UC6cKxhWxtWCgKy9_-T8xJAg" style="color: white;"><i class="fab fa-youtube fa-3x" style="padding: 0 10px;"></i></a>
+              <i class="fab fa-linkedin fa-3x" style="padding: 0 10px;"></i>
+            </ul>
+        </footer>
     </div>
 
-    <body class="container">
-        <my-app></my-app>
-    </body>
-
+  </body>
 </html>

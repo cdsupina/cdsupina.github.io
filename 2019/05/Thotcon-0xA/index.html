@@ -1,0 +1,318 @@
+
+
+
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Micronote | Thotcon 0xA </title>
+    <meta name="theme-color" content="#222222"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap4.min.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/cache_clear.js?v=1"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+ </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="z-index: 10;">
+  <a class="navbar-brand" href="/" style="color: white">
+    Carlo Supina
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color: white">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/" style="color: white">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/" style="color: white">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos/" style="color: white">Videos</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            Open Rustbot
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/open_rustbot_book/index.html">Book</a>
+          </div>
+        </li>
+    </ul>
+</nav>
+
+
+    <div class="wrapper">
+      <div class="content">
+        <div class="container container-center">
+          <div class="row">
+            <div class="col-md-8 offset-md-1">
+              <div class="article">
+                <div class="card">
+                  <h1><a href="/2019/05/Thotcon-0xA/">Thotcon 0xA</a></h1>
+                  <h3>Carlo Supina</h3>
+                  <div class="post-meta">
+                    <div class="post-time">
+                      <i class="fa fa-calendar-alt"></i>
+                      <time>05 May 2019</time>
+                    </div>
+                    <!--<ul>
+                      
+                        <li>convention</li>
+                      
+                        <li>badge</li>
+                      
+                        <li>infosec</li>
+                      
+                    </ul>-->
+                  </div>
+                  <div class="post-content">
+                    
+                    <h1 id="what-is-thotcon">What is Thotcon?</h1>
+
+<p>Thotcon is an information security convention that takes place yearly in Chicago. Its name comes from the
+312(th-o-t) area code for Chicago. This conference had a number of different talks in two different tracks, so you always had a choice of what to do at any given time. Beside the talks were the villages, where there were
+many booths setup with different activities including ham radio, a capture the flag challenge, lock picking,
+and retro gaming. A lot of these infosec conferences feature hardware badges. Besides being an indicator
+that you paid to attend the event, these badges are often programmable and serve as piece of electronic
+artwork to remember the event by.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The event badge for Thotcon 0xA.</i></caption>
+<tr><td><img src="/img/thotcon_0xa_badge_1.jpg" alt="The event badge for Thotcon 0xA." /></td></tr>
+</table>
+
+<h1 id="the-badge">The Badge</h1>
+
+<p>The badge features an ESP32 system on a chip microcontroller and is overall very similar to the <a href="https://www.sparkfun.com/products/13907">ESP32 “Thing”
+by Sparkfun</a>. It features a speaker near the bottom of the badge (see above), a microphone, 5 capacitive buttons, and 6 LEDS.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The back of the Thotcon 0xA badge.</i></caption>
+<tr><td><img src="/img/thotcon_0xa_badge_2.jpg" alt="The back of the Thotcon 0xA badge." /></td></tr>
+</table>
+
+<p>The provided <a href="https://github.com/poplicola/Thotcon0xA_Pub">firmware</a> on the badge was a puzzle challenge for all Thotcon attendees. I didn’t get too far into the challenge, but I managed to get the badge to play a message coded in the NATO phonetic alphabet after pressing the right combination of values.</p>
+
+<p>Besides the puzzle challenge was a challenge for the best badge hack. I would have liked to participate in this if I had come with a group, but I decided to wait until Thotcon was over before making something with the badge to allow myself the time to attend more talks. I plan on adding a project made with the badge to my <a href="https://micronote.tech/carlo_founder/index.html">personal page</a> when I get around to it.</p>
+
+<h1 id="lockpicking">Lockpicking</h1>
+
+<p>I spent about 40 minutes at the lockpicking station where they had all different types of locks to practice on. I had never attempted to pick a lock before and I was very surprised at how easy it was
+to pick many of the locks.</p>
+
+<p>I mostly used a rake pick and half diamond pick. These picks aren’t meant to be used to pick individual pins. Instead they are meant to “scrub” or “rake” the pins in an effort to push all of them up. This is as opposed
+to a method called “single pin picking” which is when a gently curved pick is used to push up individual pins.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>Double and triple peaked rake picks.</i></caption>
+<tr><td><img src="/img/rake_pick.jpg" alt="Double and triple peaked rake picks." /></td></tr>
+</table>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>Half diamond pick.<a name="reference1" href="#citation1"><sup>[1]</sup></a></i></caption>
+<tr><td><img src="/img/half_diamond_pick.jpg" alt="Half diamond pick." /></td></tr>
+</table>
+
+<p>There were a few locks that were much more difficult than the rest. They were protected from the “rake” 
+and “scrub” methods of lockpicking by  having special pins with notches. These notches
+would stop the barrel from being turned when the pins were pushed to the wrong height.</p>
+
+<p>This station was very enjoyable. Picking locks with the techniques I was using was very meditative. I found
+was able to do it even while having a conversation with someone. It evokes a similar feeling to using one of the
+“fidget” devices that recently gained popularity.</p>
+
+<h1 id="takeaways-from-the-talks">Takeaways from the Talks</h1>
+
+<p><a href="https://github.com/mediumrehr">Rob Rehr</a> gave a talk about badge hacking and adding on to existing badges. He explained how there was a movement to create a standard for adding onto badges by using the “Shitty Add-On” standard which allows for expansion using I2C. This standard uses four pins in a square consisting of 3.3V, GND, SDA, and SCL.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The shitty add-on standard. Explained.<a name="reference2" href="#citation1"><sup>[2]</sup></a></i></caption>
+<tr><td><img src="/img/shitty_addons.png" alt="The shitty add-on standard. Explained." /></td></tr>
+</table>
+
+<p>He also talked about at device he designed called the <a href="https://github.com/mediumrehr/SAOGenie">SAOGenie</a> which is used as a “man in the middle” to read data sent via the I2C bus and repeat the data via UART. The device is designed specifically for the aforementioned “Shitty Add-On” connector.</p>
+
+<p>Two members, <a href="https://twitter.com/riotdoge?lang=en&amp;lang=en">RiotDoge</a> and <a href="https://twitter.com/b_meson?lang=en">B_Meson</a>, from a left wing, alternative, media collective called <a href="https://unicornriot.ninja/">Unicorn Riot</a> gave a talk called “Open Source Intelligence Techniques for Monitoring the Alt-Right Online”. This talk was mostly about how they expose dangerous people who hide behind online anonymity. This process involves infiltrating a Discord, Slack, or other chat server used by a hate group to collect information from its users. They can then report the server to the hosting company and release the chat logs online. Using every scrap of information they collect, a lead can be followed using other social media like Facebook to connect an anonymous identity to a real one. They heavily recommended a book by Michael Bazzell called <a href="https://www.amazon.com/gp/product/1984201573/ref=ppx_yo_dt_b_asin_title_o02_s01?ie=UTF8&amp;psc=1"><em>Open Source Intelligence Techniques: Resources for Searching and Analyzing Online Information</em></a>, saying they reference it often in their work.
+During the Q&amp;A someone asked about the types of people they are targeting. They stated it was for the most part people connected to violence, but overall it is on a case by case basis.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Thotcon 0xA was my first infosec conference and I had great time attending the event. I hope to go to many more in the future. I learned about a lot of new things that I look forward to exploring and I am very excited to make a project with the badge.</p>
+
+<p style="margin-left: 20px; text-indent: -20px; font-size: 12px;">
+<sup><a name="citation1" href="#reference1">1</a></sup>
+   “Lock Pick - Half Diamond - Small.” Amazon.co.uk: DIY &amp; Tools, Walker Locksmiths, www.amazon.co.uk/Lock-pick-half-diamond-small/dp/B008B8MTJI. <a href="www.amazon.co.uk/Lock-pick-half-diamond-small/dp/B008B8MTJI">Link</a></p>
+
+<p style="margin-left: 20px; text-indent: -20px; font-size: 12px;">
+<sup><a name="citation2" href="#reference2">2</a></sup>
+   Benchoff. “Shitty Add-Ons.” Hackaday.io, www.hackaday.io/project/52950-shitty-add-ons. <a href="www.hackaday.io/project/52950-shitty-add-ons">Link</a></p>
+
+                    
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 hidden-xs">
+              <div class="sidebar ">
+  <h2>Recent Posts</h2>
+  <ul>
+    
+    <li><a href="/2019/09/Printed-Gauntlet/">Printed Gauntlet</a></li>
+    
+    <li><a href="/2019/09/Space-Shooter-Game/">Space Shooter Game</a></li>
+    
+    <li><a href="/2019/05/Thotcon-0xA/">Thotcon 0xA</a></li>
+    
+    <li><a href="/2019/04/Infrared-Rover-Prototype/">Infrared Rover Prototype</a></li>
+    
+  </ul>
+</div>
+
+<div class="sidebar">
+  <h2>Tags</h2>
+  <ul class="sideBarTags fa-ul">
+    
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/3d-printer" data-toggle="tooltip" data-placement="right" title="1">
+        <span>3d-printer</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amethyst" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amethyst</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amg8833" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amg8833</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/autodesk-inventor" data-toggle="tooltip" data-placement="right" title="1">
+        <span>autodesk-inventor</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/badge" data-toggle="tooltip" data-placement="right" title="1">
+        <span>badge</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/convention" data-toggle="tooltip" data-placement="right" title="1">
+        <span>convention</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/game" data-toggle="tooltip" data-placement="right" title="1">
+        <span>game</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/infosec" data-toggle="tooltip" data-placement="right" title="1">
+        <span>infosec</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/l298n" data-toggle="tooltip" data-placement="right" title="1">
+        <span>l298n</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/motors" data-toggle="tooltip" data-placement="right" title="1">
+        <span>motors</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/rust" data-toggle="tooltip" data-placement="right" title="2">
+        <span>rust</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/st7735" data-toggle="tooltip" data-placement="right" title="1">
+        <span>st7735</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/stm32" data-toggle="tooltip" data-placement="right" title="1">
+        <span>stm32</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/xbee" data-toggle="tooltip" data-placement="right" title="1">
+        <span>xbee</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="footer-basic" style="padding: 30px 0; background-color: #292c2f;color: white;">
+        <footer>
+            <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+              <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-3x" style="padding: 0 10px;"></i></a>
+              <a href="https://www.youtube.com/channel/UC6cKxhWxtWCgKy9_-T8xJAg" style="color: white;"><i class="fab fa-youtube fa-3x" style="padding: 0 10px;"></i></a>
+              <i class="fab fa-linkedin fa-3x" style="padding: 0 10px;"></i>
+            </ul>
+        </footer>
+    </div>
+
+    </div>
+  </body>
+</html>

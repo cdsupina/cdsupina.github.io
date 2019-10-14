@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Open Rustbot</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><a href="embedded_rust_programming.html"><strong aria-hidden="true">2.</strong> Embedded Rust Programming</a></li><li><a href="open_rust_bot.html"><strong aria-hidden="true">3.</strong> Open Rustbot</a></li><li><a href="glossary.html"><strong aria-hidden="true">4.</strong> Glossary</a></li><li><a href="appendix.html"><strong aria-hidden="true">5.</strong> Appendix</a></li><li><ol class="section"><li><a href="alternative.html"><strong aria-hidden="true">5.1.</strong> Alternative STM32 Microcontrollers</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Open Rustbot</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<h2><a class="header" href="#overview" id="overview">Overview</a></h2>
+<p>The goal of this book is to be a good starting point for people new to embedded Rust programming. If you are new to Rust
+and/or new to embedded programming, you should be able gain knowledge from this book.</p>
+<p>This book is separated into two main parts:</p>
+<ul>
+<li>Embedded Rust Programming</li>
+<li>Open Rustbot</li>
+</ul>
+<p>Both parts of this book can be a starting point. However, they offer different learning experiences that may suit
+different people. The &quot;Embedded Rust Programming&quot; part goes over one concept at a time with increasing
+difficulty and the &quot;Open Rustbot&quot; part walks through building and programming a rover using Rust. Below is a list of
+required hardware for each section.</p>
+<h3><a class="header" href="#hardware-required-for-both-parts" id="hardware-required-for-both-parts">Hardware Required for both Parts</a></h3>
+<table><thead><tr><th>Name</th><th>Image</th><th>Price</th><th>Link</th></tr></thead><tbody>
+<tr><td>STM32F103C8T6 Development Board</td><td>image</td><td>$6.33</td><td><a href="https://amzn.to/32bTqeM">https://amzn.to/32bTqeM</a></td></tr>
+<tr><td>ST-Link V2</td><td>image</td><td>$8.60</td><td><a href="https://amzn.to/35wE9qM">https://amzn.to/35wE9qM</a></td></tr>
+</tbody></table>
+<h3><a class="header" href="#embedded-rust-programming" id="embedded-rust-programming">Embedded Rust Programming</a></h3>
+<table><thead><tr><th>Name</th><th>Image</th><th>Price</th><th>Link</th></tr></thead><tbody>
+</tbody></table>
+<h3><a class="header" href="#open-rustbot" id="open-rustbot">Open Rustbot</a></h3>
+<table><thead><tr><th>Name</th><th>Image</th><th>Price</th><th>Link</th></tr></thead><tbody>
+</tbody></table>
+<p>After you have an ST-Link V2 and an STM32f103 development board you should proceed to complete the steps in the
+<a href="./getting_started.html#getting-started">Getting Started</a> section.</p>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting Started</a></h1>
+<h2><a class="header" href="#required-hardware" id="required-hardware">Required Hardware</a></h2>
+<table><thead><tr><th>Name</th><th>Image</th><th>Price</th><th>Link</th></tr></thead><tbody>
+<tr><td>STM32F103C8T6 Development Board</td><td>image</td><td>$6.33</td><td><a href="https://amzn.to/32bTqeM">https://amzn.to/32bTqeM</a></td></tr>
+<tr><td>ST-Link V2</td><td>image</td><td>$8.60</td><td><a href="https://amzn.to/35wE9qM">https://amzn.to/35wE9qM</a></td></tr>
+</tbody></table>
+<h2><a class="header" href="#install" id="install">Install</a></h2>
+<ul>
+<li>Install rust <a href="https://www.rust-lang.org/tools/install">https://www.rust-lang.org/tools/install</a></li>
+<li>Add the the thumbv7m <sup><a href="getting_started.html#myfootnote1">1</a></sup> target <code>rustup target add thumbv7m-none-eabi</code></li>
+<li>Install cargo-generate and cargo-binutils <code>cargo install cargo-generate cargo-binutils</code></li>
+<li>Install llvm-tools-preview component <code>rustup component add llvm-tools-preview</code></li>
+<li>Install openocd and gdb-multiarch using your OS's package manager</li>
+</ul>
+<h2><a class="header" href="#stm32_starter_rs" id="stm32_starter_rs">stm32_starter_rs</a></h2>
+<p>To ease the process of starting a new embedded project using Rust. We have created a starter repository called
+<a href="https://github.com/Open-Rustbot/stm32_starter_rs">stm32_starter_rs</a>. You can clone this repository using the following
+command.</p>
+<p><code>git clone https://github.com/Open-Rustbot/stm32_starter_rs.git</code></p>
+<p>This repository is setup for the STM32f103 microcontroller, but it can easily be configured for other
+STM32 microcontrollers. Now we will proceed to go through each of the files in the directory and their explain purpose.</p>
+<h3><a class="header" href="#cargoconfig" id="cargoconfig"><code>./cargo/config</code></a></h3>
+<h3><a class="header" href="#memoryx" id="memoryx"><code>memory.x</code></a></h3>
+<h3><a class="header" href="#openocdcfg" id="openocdcfg"><code>openocd.cfg</code></a></h3>
+<h3><a class="header" href="#openocdgdb" id="openocdgdb"><code>openocd.gdb</code></a></h3>
+<h2><a class="header" href="#hello-world" id="hello-world">Hello World</a></h2>
+<p>After installing the required software we can perform the &quot;Hello World&quot; of the hardware world, a blinking LED.
+Take a look at
+src/main.rs and make an effort to understand the script.</p>
+<h3><a class="header" href="#connect-the-stm32-microcontroller-to-computer" id="connect-the-stm32-microcontroller-to-computer">Connect the STM32 Microcontroller to Computer</a></h3>
+<h3><a class="header" href="#launch-openocd" id="launch-openocd">Launch OpenOCD</a></h3>
+<p>After your microcontroller is connected to your computer using the ST-Link, open a terminal, navigate to the root of the
+repository, and execute <code>openocd</code>. You should see an output similar to the screenshot below.</p>
+<p><img src="../assets/openocd.png" alt="openocd" /></p>
+<p>It is important to be in the same directory of the repository so that openocd can read the openocd.cfg file located in
+the directory.</p>
+<h3><a class="header" href="#run-the-program" id="run-the-program">Run the Program</a></h3>
+<p>In another terminal, navigate to the same directory again and this time execute <code>cargo run</code>.
+This will compile the rust source code, flash it onto the microcontroller, and open a gdb prompt. Enter a <code>c</code> in the gdb
+prompt to continue the program. You should now see the led on the microcontroller periodically blinking.
+This program is now flashed onto the microcontroller, so pressing the reset button will restart the program.</p>
+<p>Congratulations! You have successfully run your first embedded rust program!</p>
+<br>
+<p><sub><sup><a name="myfootnote1">1. </a>
+This is STM32f103 specific. If you are using a different STM32 microcontroller check
+<a href="./alternative.html#finding-the-correct-target-for-your-microcontroller">this section</a> of the appendix for
+information on how to find the correct target for your microcontroller.
+</sup></sub></p>
+<h1><a class="header" href="#embedded-rust-programming-1" id="embedded-rust-programming-1">Embedded Rust Programming</a></h1>
+<p>hello</p>
+<h1><a class="header" href="#open-rust-bot" id="open-rust-bot">Open Rust Bot</a></h1>
+<h1><a class="header" href="#glossary" id="glossary">Glossary</a></h1>
+<h2><a class="header" href="#rust" id="rust">Rust</a></h2>
+<h2><a class="header" href="#openocd" id="openocd">OpenOCD</a></h2>
+<p>An open-source &quot;on-chip debugger&quot; used for flashing and debugging programs on microcontrollers.</p>
+<h2><a class="header" href="#gdb" id="gdb">GDB</a></h2>
+<h1><a class="header" href="#appendix" id="appendix">Appendix</a></h1>
+<h1><a class="header" href="#alternative-stm32-microcontrollers" id="alternative-stm32-microcontrollers">Alternative STM32 Microcontrollers</a></h1>
+<h2><a class="header" href="#finding-the-correct-target-for-your-microcontroller" id="finding-the-correct-target-for-your-microcontroller">Finding the Correct Target for Your Microcontroller</a></h2>
+<p>This is STM32f103 specific. If you are using a different microcontroller check the relevant pages on ARM's website.</p>
+<p>For example if I needed to find the target for the STM32f103 microcontroller which is the board this book uses.
+I can go to the the STM32f103's page <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f103.html">here</a>.</p>
+<p><img src="../assets/stm32f103_arm_overview.png" alt="stm32f103_arm_overview" /></p>
+<p>In the overview I can see that the microcontroller has a Cortex-M3 core. I then go to the Cortex-M3
+<a href="https://developer.arm.com/ip-products/processors/cortex-m/cortex-m3">page</a>. The first thing in the list of
+specifications is the architecture which is listed as ARMv7-M.</p>
+<p><img src="../assets/cortexm3_spec.png" alt="cortexm3_spec" /></p>
+<p>This means that the target required for the microcontroller is thumbv7m and I can use the command
+<code>rustup target add thumbv7m-none-eabi</code> to add it. Replace &quot;thumbv7m&quot; with your boards instruction set.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

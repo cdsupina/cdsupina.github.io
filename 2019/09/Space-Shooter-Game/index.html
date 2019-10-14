@@ -1,0 +1,532 @@
+
+
+
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Micronote | Space Shooter Game </title>
+    <meta name="theme-color" content="#222222"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap4.min.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/cache_clear.js?v=1"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+ </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="z-index: 10;">
+  <a class="navbar-brand" href="/" style="color: white">
+    Carlo Supina
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color: white">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/" style="color: white">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/" style="color: white">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos/" style="color: white">Videos</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            Open Rustbot
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/open_rustbot_book/index.html">Book</a>
+          </div>
+        </li>
+    </ul>
+</nav>
+
+
+    <div class="wrapper">
+      <div class="content">
+        <div class="container container-center">
+          <div class="row">
+            <div class="col-md-8 offset-md-1">
+              <div class="article">
+                <div class="card">
+                  <h1><a href="/2019/09/Space-Shooter-Game/">Space Shooter Game</a></h1>
+                  <h3>Carlo Supina</h3>
+                  <div class="post-meta">
+                    <div class="post-time">
+                      <i class="fa fa-calendar-alt"></i>
+                      <time>02 Sep 2019</time>
+                    </div>
+                    <!--<ul>
+                      
+                        <li>rust</li>
+                      
+                        <li>amethyst</li>
+                      
+                        <li>game</li>
+                      
+                    </ul>-->
+                  </div>
+                  <div class="post-content">
+                    
+                    <p><a href="https://github.com/amethyst/space_shooter_rs/stargazers"><img src="https://img.shields.io/github/stars/amethyst/space_shooter_rs?style=social" alt="GitHub stars" /></a>
+<a href="https://github.com/amethyst/space_shooter_rs/network"><img src="https://img.shields.io/github/forks/amethyst/space_shooter_rs?style=social" alt="GitHub forks" /></a></p>
+<h1 id="update---09022019">Update - 09/02/2019</h1>
+<h1 id="big-news">Big News!</h1>
+<p>A few months after continued development of this game I was contacted by someone representing the
+Amethyst Engine regarding making this game an <a href="https://amethyst.rs/posts/third-showcase-game-space-shooter">official showcase game</a>
+for Amethyst. I gladly accepted!
+This means that this game will now be relocated to Amethyst’s <a href="https://github.com/amethyst/space_shooter_rs">Github page</a>.
+I still have just as much control over the future of the game, the only difference is that it is now officially part of the Amethyst organization. I hope to have more people from the Amethyst community contribute to it.</p>
+
+<h1 id="changes">Changes</h1>
+
+<ul>
+  <li>Collisions now happen between the player and enemies allowing for an alternate way to destroy enemies</li>
+  <li>Barrel rolls grant blast immunity</li>
+  <li>Hauler ally added, grants defense when reaching the bottom of the arena</li>
+  <li>Health bar added, depleted when spaceship takes damage</li>
+  <li>Defense bar added, depleted when enemies reach bottom of the arena</li>
+  <li>Roll bar added to indicate readiness of barrel roll</li>
+  <li>Health and defense wrenches added and sometimes drop from enemies when destroyed</li>
+  <li>1x and 5x currency rocks added and sometimes drop from enemies when destroyed</li>
+  <li>Sound effects added</li>
+  <li>Phase system added</li>
+</ul>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+<iframe src="https://gfycat.com/ifr/fortunatedependentisopod" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</div>
+<p><br /></p>
+
+<hr />
+<h1 id="original---post-06032019">Original - Post 06/03/2019</h1>
+<h1 id="amethyst">Amethyst</h1>
+<p>From its website, <a href="https://amethyst.rs/">Amethyst</a> is described as a “data-driven game
+engine written in Rust”.
+The engine uses an ECS (entity, component, system) for game logic and architecture.
+I am still relatively new to Amethyst, but I understand from my experience that
+ECS is used in Amethyst as a way to architect a program by separating code into components,
+entities, and systems so that the program can be abstractly parallelized. In other words,
+through using ECS and Amethyst, your game can automatically take advantage of multiple CPU cores.
+There are other game engine options for
+Rust, but Amethyst appears to be the most popular and ambitious of the options. To see other options
+for game development in Rust I recommend checking out <a href="http://arewegameyet.com/">arewegameyet.com</a>.</p>
+<h1 id="ecs">ECS</h1>
+<p>ECS is core to Amethyst. There is no getting around using ECS when developing a game with
+Amethyst. At first. this was difficult for me. I previously had been more used to game engines like
+<a href="https://www.pygame.org/news">Pygame</a> and <a href="https://love2d.org/">LÖVE</a>. However, after a 
+couple weeks of using the engine, I found that ECS makes the process of game programming not only
+more efficient, but also in many ways easier. For example, ECS makes it much easier to 
+quickly understand other people’s code. It is very easy to determine at any given point 
+whether the code you are looking at is a system, component or entity and subsequently figure 
+out exactly what that the code is doing.</p>
+
+<h2 id="components-and-entities">Components and Entities</h2>
+<p>Components are the building blocks of entities and entities are the building blocks of the game.
+An example of an entity is the player-controlled spaceship in my space shooter game.
+When defining an entity you often
+use <code class="highlighter-rouge">.with()</code> to indicate that you are creating the entity “with” that component. Below is 
+the example of me doing this in my space shooter game. In the code, you can see that I’m defining
+an entity representing my spaceship player to be put in the game. The entity contains a
+<code class="highlighter-rouge">SpriteRender</code> component, a custom <code class="highlighter-rouge">Spaceship</code> component that I defined, a <code class="highlighter-rouge">Transform</code> component, and a <code class="highlighter-rouge">Transparent</code> component.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="k">mut</span> <span class="n">local_transform</span> <span class="o">=</span> <span class="nn">Transform</span><span class="p">::</span><span class="nf">default</span><span class="p">();</span>
+<span class="n">local_transform</span><span class="nf">.set_xyz</span><span class="p">(</span><span class="n">GAME_WIDTH</span> <span class="err">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">GAME_HEIGHT</span> <span class="err">/</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">);</span>
+
+<span class="k">let</span> <span class="n">sprite_render</span> <span class="o">=</span> <span class="n">SpriteRender</span> <span class="p">{</span>
+    <span class="n">sprite_sheet</span><span class="p">:</span> <span class="n">sprite_sheet_handle</span><span class="nf">.clone</span><span class="p">(),</span>
+    <span class="n">sprite_number</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="n">world</span>
+    <span class="nf">.create_entity</span><span class="p">()</span>
+    <span class="nf">.with</span><span class="p">(</span><span class="n">sprite_render</span><span class="p">)</span>
+    <span class="nf">.with</span><span class="p">(</span><span class="n">Spaceship</span> <span class="p">{</span>
+        <span class="n">width</span><span class="p">:</span> <span class="n">SPACESHIP_WIDTH</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">:</span> <span class="n">SPACESHIP_HEIGHT</span><span class="p">,</span>
+        <span class="n">hitbox_width</span><span class="p">:</span> <span class="n">SPACESHIP_HITBOX_WIDTH</span><span class="p">,</span>
+        <span class="n">hitbox_height</span><span class="p">:</span> <span class="n">SPACESHIP_HITBOX_HEIGHT</span><span class="p">,</span>
+        <span class="n">max_speed</span><span class="p">:</span> <span class="n">SPACESHIP_MAX_SPEED</span><span class="p">,</span>
+        <span class="n">current_velocity_x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">current_velocity_y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">acceleration_x</span><span class="p">:</span> <span class="n">SPACESHIP_ACCELERATION_X</span><span class="p">,</span>
+        <span class="n">deceleration_x</span><span class="p">:</span> <span class="n">SPACESHIP_DECELERATION_X</span><span class="p">,</span>
+        <span class="n">acceleration_y</span><span class="p">:</span> <span class="n">SPACESHIP_ACCELERATION_Y</span><span class="p">,</span>
+        <span class="n">deceleration_y</span><span class="p">:</span> <span class="n">SPACESHIP_DECELERATION_Y</span><span class="p">,</span>
+        <span class="n">fire_speed</span><span class="p">:</span> <span class="n">SPACESHIP_STARTING_FIRE_SPEED</span><span class="p">,</span>
+        <span class="n">fire_reset_timer</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">damage</span><span class="p">:</span> <span class="n">SPACESHIP_STARTING_DAMAGE</span><span class="p">,</span>
+        <span class="n">barrel_cooldown</span><span class="p">:</span> <span class="n">SPACESHIP_BARREL_COOLDOWN</span><span class="p">,</span>
+        <span class="n">barrel_reset_timer</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">barrel_speed</span><span class="p">:</span> <span class="n">SPACESHIP_BARREL_SPEED</span><span class="p">,</span>
+        <span class="n">barrel_action_right</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+        <span class="n">barrel_action_left</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+        <span class="n">barrel_duration</span><span class="p">:</span> <span class="n">SPACESHIP_BARREL_DURATION</span><span class="p">,</span>
+        <span class="n">barrel_action_timer</span><span class="p">:</span> <span class="n">SPACESHIP_BARREL_DURATION</span><span class="p">,</span>
+        <span class="n">barrel_damage</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">pos_x</span><span class="p">:</span> <span class="n">local_transform</span><span class="nf">.translation</span><span class="p">()</span><span class="py">.x</span><span class="p">,</span>
+        <span class="n">pos_y</span><span class="p">:</span> <span class="n">local_transform</span><span class="nf">.translation</span><span class="p">()</span><span class="py">.y</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="nf">.with</span><span class="p">(</span><span class="n">local_transform</span><span class="p">)</span>
+    <span class="nf">.with</span><span class="p">(</span><span class="n">Transparent</span><span class="p">)</span>
+    <span class="nf">.build</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The above example includes a component that is custom, the <code class="highlighter-rouge">Spaceship</code>, and components that
+are included with Amethyst such as <code class="highlighter-rouge">SpriteRender</code>, <code class="highlighter-rouge">Transform</code>, and <code class="highlighter-rouge">Transparent</code>. Below is the 
+code where I define my custom <code class="highlighter-rouge">Spaceship</code> component. It contains a lot of different data that
+is used in different systems to control the game and it implements <code class="highlighter-rouge">Component</code>. It is also 
+implemented with storage which I’ll get into in the Systems section.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">Spaceship</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="n">width</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">height</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">hitbox_width</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">hitbox_height</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">current_velocity_x</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">current_velocity_y</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">max_speed</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">acceleration_x</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">deceleration_x</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">acceleration_y</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">deceleration_y</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">fire_speed</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">fire_reset_timer</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">damage</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_cooldown</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_reset_timer</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_speed</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_action_left</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_action_right</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_duration</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_action_timer</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">barrel_damage</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">pos_x</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+    <span class="k">pub</span> <span class="n">pos_y</span><span class="p">:</span> <span class="nb">f32</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Component</span> <span class="k">for</span> <span class="n">Spaceship</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Storage</span> <span class="o">=</span> <span class="n">DenseVecStorage</span><span class="o">&lt;</span><span class="n">Self</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="systems">Systems</h2>
+<p>Systems are where the logic of the game happens.
+Above, where the <code class="highlighter-rouge">Spaceship</code> component is defined, it is implemented with
+<code class="highlighter-rouge">type Storage = DenseVecStorage&lt;Self&gt;;</code>. Creating a system consists mainly of writing and
+reading to storages associated with entities and components. This is done by creating a type out of all of the <code class="highlighter-rouge">SystemData</code> needed for the system. Then, as needed, data can be iterated through, read,
+and modified to create game logic. In the example below, you can see that I also get user input in this system.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">SpaceshipSystem</span><span class="p">;</span>
+<span class="k">impl</span><span class="o">&lt;</span><span class="nv">'s</span><span class="o">&gt;</span> <span class="n">System</span><span class="o">&lt;</span><span class="nv">'s</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">SpaceshipSystem</span> <span class="p">{</span>
+
+    <span class="k">type</span> <span class="n">SystemData</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Entities</span><span class="o">&lt;</span><span class="nv">'s</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">WriteStorage</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">Transform</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">WriteStorage</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">Spaceship</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">WriteStorage</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">Enemy</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">Read</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">InputHandler</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+        <span class="n">Read</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">Time</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">ReadExpect</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">SpriteResource</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="n">ReadExpect</span><span class="o">&lt;</span><span class="nv">'s</span><span class="p">,</span> <span class="n">LazyUpdate</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">);</span>
+
+    <span class="k">fn</span> <span class="nf">run</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">,</span> <span class="p">(</span><span class="n">entities</span><span class="p">,</span> <span class="k">mut</span> <span class="n">transforms</span><span class="p">,</span> <span class="k">mut</span> <span class="n">spaceships</span><span class="p">,</span> <span class="k">mut</span> <span class="n">enemies</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">sprite_resource</span><span class="p">,</span> <span class="n">lazy_update</span><span class="p">):</span> <span class="nn">Self</span><span class="p">::</span><span class="n">SystemData</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">shoot</span> <span class="o">=</span> <span class="n">input</span><span class="nf">.action_is_down</span><span class="p">(</span><span class="s">"shoot"</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">();</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">barrel_left</span> <span class="o">=</span> <span class="n">input</span><span class="nf">.action_is_down</span><span class="p">(</span><span class="s">"barrel_left"</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">();</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">barrel_right</span><span class="o">=</span> <span class="n">input</span><span class="nf">.action_is_down</span><span class="p">(</span><span class="s">"barrel_right"</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">();</span>
+
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">spaceship</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span> <span class="nf">in</span> <span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">spaceships</span><span class="p">,</span> <span class="o">&amp;</span><span class="k">mut</span> <span class="n">transforms</span><span class="p">)</span><span class="nf">.join</span><span class="p">()</span> <span class="p">{</span>
+
+            <span class="n">spaceship</span><span class="py">.pos_x</span> <span class="o">=</span> <span class="n">transform</span><span class="nf">.translation</span><span class="p">()</span><span class="py">.x</span><span class="p">;</span>
+            <span class="n">spaceship</span><span class="py">.pos_y</span><span class="o">=</span> <span class="n">transform</span><span class="nf">.translation</span><span class="p">()</span><span class="py">.y</span><span class="p">;</span>
+
+            <span class="c">//firing cooldown</span>
+            <span class="k">if</span> <span class="n">spaceship</span><span class="py">.fire_reset_timer</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">{</span>
+                <span class="n">spaceship</span><span class="py">.fire_reset_timer</span> <span class="err">-</span><span class="o">=</span> <span class="n">time</span><span class="nf">.delta_seconds</span><span class="p">();</span>
+                <span class="n">shoot</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c">//barrel roll input cooldown</span>
+            <span class="k">if</span> <span class="n">spaceship</span><span class="py">.barrel_reset_timer</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="p">{</span>
+                <span class="n">spaceship</span><span class="py">.barrel_reset_timer</span> <span class="err">-</span><span class="o">=</span> <span class="n">time</span><span class="nf">.delta_seconds</span><span class="p">();</span>
+                <span class="n">barrel_left</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+                <span class="n">barrel_right</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c">//barrel roll action cooldown</span>
+            <span class="k">if</span> <span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="p">||</span> <span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="p">{</span>
+
+                <span class="c">//if currently barrel rolling can't initiate another barrel roll</span>
+                <span class="n">barrel_left</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+                <span class="n">barrel_right</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+                <span class="c">//countdown to end of barrel roll if time left else set velocity to the appropriate max speed, stop the action, and reset cooldown</span>
+                <span class="k">if</span> <span class="n">spaceship</span><span class="py">.barrel_action_timer</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="p">{</span>
+                    <span class="n">spaceship</span><span class="py">.barrel_action_timer</span> <span class="err">-</span><span class="o">=</span> <span class="n">time</span><span class="nf">.delta_seconds</span><span class="p">();</span>
+                <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+
+
+                    <span class="k">if</span> <span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="p">{</span>
+                        <span class="n">spaceship</span><span class="py">.current_velocity_x</span> <span class="o">=</span> <span class="err">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">spaceship</span><span class="py">.max_speed</span><span class="p">;</span>
+                    <span class="p">}</span>
+
+                    <span class="k">if</span> <span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="p">{</span>
+                        <span class="n">spaceship</span><span class="py">.current_velocity_x</span> <span class="o">=</span> <span class="n">spaceship</span><span class="py">.max_speed</span><span class="p">;</span>
+                    <span class="p">}</span>
+
+                    <span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+                    <span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+                    <span class="n">spaceship</span><span class="py">.barrel_reset_timer</span> <span class="o">=</span> <span class="n">spaceship</span><span class="py">.barrel_cooldown</span><span class="p">;</span>
+                    <span class="k">for</span> <span class="n">enemy</span> <span class="nf">in</span> <span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">enemies</span><span class="p">)</span><span class="nf">.join</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="n">enemy</span><span class="py">.barrel_damaged</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span>
+
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">shoot</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="n">fire_position</span> <span class="o">=</span> <span class="nn">Vector3</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span>
+                    <span class="n">transform</span><span class="nf">.translation</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">transform</span><span class="nf">.translation</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">spaceship</span><span class="py">.height</span> <span class="err">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+                <span class="p">);</span>
+
+                <span class="nf">fire_blast</span><span class="p">(</span><span class="o">&amp;</span><span class="n">entities</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sprite_resource</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">fire_position</span><span class="p">,</span> <span class="n">spaceship</span><span class="py">.damage</span><span class="p">,</span> <span class="n">spaceship</span><span class="py">.current_velocity_x</span><span class="p">,</span> <span class="n">spaceship</span><span class="py">.current_velocity_y</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">lazy_update</span><span class="p">);</span>
+                <span class="n">spaceship</span><span class="py">.fire_reset_timer</span> <span class="o">=</span> <span class="n">spaceship</span><span class="py">.fire_speed</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">barrel_left</span> <span class="p">{</span>
+                <span class="n">spaceship</span><span class="py">.barrel_action_left</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+                <span class="n">spaceship</span><span class="py">.barrel_action_timer</span> <span class="o">=</span> <span class="n">spaceship</span><span class="py">.barrel_duration</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">barrel_right</span> <span class="p">{</span>
+                <span class="n">spaceship</span><span class="py">.barrel_action_right</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+                <span class="n">spaceship</span><span class="py">.barrel_action_timer</span> <span class="o">=</span> <span class="n">spaceship</span><span class="py">.barrel_duration</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Just like when defining entities, systems are added to a dispatcher by using
+<code class="highlighter-rouge">.with()</code> as well. Below is the code for the dispatcher used in the main game state (if you want to learn about states I encourage you to read the Amethyst <a href="https://book.amethyst.rs/stable/">book</a>).</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">impl</span> <span class="n">Default</span> <span class="k">for</span> <span class="n">SpaceShooter</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">default</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">Self</span> <span class="p">{</span>
+        <span class="n">SpaceShooter</span> <span class="p">{</span>
+            <span class="n">dispatcher</span><span class="p">:</span> <span class="nn">DispatcherBuilder</span><span class="p">::</span><span class="nf">new</span><span class="p">()</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">SpaceshipSystem</span><span class="p">,</span> <span class="s">"spaceship_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">BlastSystem</span><span class="p">,</span> <span class="s">"blast_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">EnemySystem</span><span class="p">,</span> <span class="s">"enemy_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">SpawnerSystem</span><span class="p">,</span> <span class="s">"spawner_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">PlayerHitSystem</span><span class="p">,</span> <span class="s">"player_hit_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">ExplosionSystem</span><span class="p">,</span> <span class="s">"explosion_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">ItemSystem</span><span class="p">,</span> <span class="s">"item_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">BarrelRollSystem</span><span class="p">,</span> <span class="s">"barrel_roll_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">SpaceshipMovementSystem</span><span class="p">,</span> <span class="s">"spaceship_movement_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.with</span><span class="p">(</span><span class="nn">systems</span><span class="p">::</span><span class="n">ItemSpawnSystem</span><span class="p">,</span> <span class="s">"item_spawn_system"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">[])</span>
+                <span class="nf">.build</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="space-shooter-game">Space Shooter Game</h1>
+<p>This game began as a way for me to learn Rust and Amethyst and has turned into a project that
+I plan on continuing. You can view the readme file on the <a href="https://github.com/cdsupina/space_shooter_rs">github</a> page. On it, I have defined mechanics, visual, audio, and gameplay objectives that
+I plan to implement into the game.</p>
+
+<p>Overall I plan on making this into a game inspired like games such as Raiden and The Binding of Isaac.
+Raiden is an arcade game where an aircraft is controlled to shoot down enemies and score points. The
+Binding of Isaac is a game with randomly generated levels, with rooms, enemies, items, and bosses.
+I have already
+implemented a pool that items can be added to for upgrading the player’s ship and I have implemented
+a pool that enemies can be pulled from to be randomly spawned.</p>
+
+<p>Below is gameplay of my space shooter game at its current state.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+
+<iframe src="https://www.youtube.com/embed/OtN5vL80u4Q" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+</div>
+
+<p><br /></p>
+
+<p>If you want to check out my code you can go to its <a href="https://github.com/cdsupina/space_shooter_rs">github</a>
+page. If you are interested in contributing you can feel free to send me an email at
+cdsupina@micronote.tech.</p>
+
+
+                    
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 hidden-xs">
+              <div class="sidebar ">
+  <h2>Recent Posts</h2>
+  <ul>
+    
+    <li><a href="/2019/09/Printed-Gauntlet/">Printed Gauntlet</a></li>
+    
+    <li><a href="/2019/09/Space-Shooter-Game/">Space Shooter Game</a></li>
+    
+    <li><a href="/2019/05/Thotcon-0xA/">Thotcon 0xA</a></li>
+    
+    <li><a href="/2019/04/Infrared-Rover-Prototype/">Infrared Rover Prototype</a></li>
+    
+  </ul>
+</div>
+
+<div class="sidebar">
+  <h2>Tags</h2>
+  <ul class="sideBarTags fa-ul">
+    
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/3d-printer" data-toggle="tooltip" data-placement="right" title="1">
+        <span>3d-printer</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amethyst" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amethyst</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amg8833" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amg8833</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/autodesk-inventor" data-toggle="tooltip" data-placement="right" title="1">
+        <span>autodesk-inventor</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/badge" data-toggle="tooltip" data-placement="right" title="1">
+        <span>badge</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/convention" data-toggle="tooltip" data-placement="right" title="1">
+        <span>convention</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/game" data-toggle="tooltip" data-placement="right" title="1">
+        <span>game</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/infosec" data-toggle="tooltip" data-placement="right" title="1">
+        <span>infosec</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/l298n" data-toggle="tooltip" data-placement="right" title="1">
+        <span>l298n</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/motors" data-toggle="tooltip" data-placement="right" title="1">
+        <span>motors</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/rust" data-toggle="tooltip" data-placement="right" title="2">
+        <span>rust</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/st7735" data-toggle="tooltip" data-placement="right" title="1">
+        <span>st7735</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/stm32" data-toggle="tooltip" data-placement="right" title="1">
+        <span>stm32</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/xbee" data-toggle="tooltip" data-placement="right" title="1">
+        <span>xbee</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="footer-basic" style="padding: 30px 0; background-color: #292c2f;color: white;">
+        <footer>
+            <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+              <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-3x" style="padding: 0 10px;"></i></a>
+              <a href="https://www.youtube.com/channel/UC6cKxhWxtWCgKy9_-T8xJAg" style="color: white;"><i class="fab fa-youtube fa-3x" style="padding: 0 10px;"></i></a>
+              <i class="fab fa-linkedin fa-3x" style="padding: 0 10px;"></i>
+            </ul>
+        </footer>
+    </div>
+
+    </div>
+  </body>
+</html>

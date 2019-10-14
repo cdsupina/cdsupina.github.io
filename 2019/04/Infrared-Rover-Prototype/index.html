@@ -1,0 +1,358 @@
+
+
+
+
+
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Micronote | Infrared Rover Prototype </title>
+    <meta name="theme-color" content="#222222"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap4.min.js"></script>
+    <!--<script type="text/javascript" src="/assets/js/cache_clear.js?v=1"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/syntax.css" rel="stylesheet">
+ </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="z-index: 10;">
+  <a class="navbar-brand" href="/" style="color: white">
+    Carlo Supina
+  </a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border: none">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color: white">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/" style="color: white">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects/" style="color: white">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/videos/" style="color: white">Videos</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            Open Rustbot
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/open_rustbot_book/index.html">Book</a>
+          </div>
+        </li>
+    </ul>
+</nav>
+
+
+    <div class="wrapper">
+      <div class="content">
+        <div class="container container-center">
+          <div class="row">
+            <div class="col-md-8 offset-md-1">
+              <div class="article">
+                <div class="card">
+                  <h1><a href="/2019/04/Infrared-Rover-Prototype/">Infrared Rover Prototype</a></h1>
+                  <h3>Carlo Supina</h3>
+                  <div class="post-meta">
+                    <div class="post-time">
+                      <i class="fa fa-calendar-alt"></i>
+                      <time>26 Apr 2019</time>
+                    </div>
+                    <!--<ul>
+                      
+                        <li>rust</li>
+                      
+                        <li>motors</li>
+                      
+                        <li>stm32</li>
+                      
+                        <li>amg8833</li>
+                      
+                        <li>xbee</li>
+                      
+                        <li>l298n</li>
+                      
+                        <li>st7735</li>
+                      
+                    </ul>-->
+                  </div>
+                  <div class="post-content">
+                    
+                    <h1 id="the-idea">The Idea</h1>
+
+<p>The idea to build this rover came out of the need for a project for my ECE362 class at Purdue University.
+In this class we learned how to program and apply microcontrollers in C and assembly.
+We used the stm32f0discovery board which has an stm32f051r8 microcontroller.</p>
+
+<p>I had previously built a small rover two summers ago that I could control over wifi with a Raspberry Pi.
+It used two l298n motor drivers to control four motors with roller wheels arranged in a square. This allowed the
+rover to instantly go in any cardinal direction and rotate on a point. I knew that this project could be
+converted to use the stm32 microcontroller and would be a great project for this assignment, so I pitched it to
+my team. Together we decided to go ahead and do it.</p>
+
+<p>We decided on the following criteria for the project:</p>
+
+<ul>
+  <li>two way radio to control the car and display data on the controller</li>
+  <li>analog input</li>
+  <li>pwm output to motor drivers</li>
+  <li>a screen on the controller to display data</li>
+  <li>at least 2 input buttons on the controller to rotate the rover</li>
+  <li>an imu on the car to measure rotation and acceleration</li>
+  <li>(if time) some kind of camera to collect visual data</li>
+</ul>
+
+<p>At a minimum the car should be able to move and be controlled via radio and the imu data should be sent
+back to the controller and be displayed on the screen.</p>
+
+<h1 id="the-controller">The Controller</h1>
+
+<p>I primarily worked on the controller and early on I made the decision to write the program in
+<a href="https://www.rust-lang.org/">Rust</a>. I made the decision to use this language because I had been
+looking for project to learn Rust with, and I had heard from a friend that stm32 microcontrollers could be
+programed with it. It took me a weekend to get an environment setup to flash the microcontroller and another 
+week to get used to programming in Rust.</p>
+
+<p>I started the controller schematic with the stm32f051r8 and labeling the pins that I was planning on using for the analog stick, buttons, Xbee, and screen.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The stm32f056r8 pin labels and the pinout for the st7735 screen.</i></caption>
+<tr><td><img src="/img/schematic_1.png" alt="The stm32f056r8 pin labels and the pinout for the st7735 screen." /></td></tr>
+</table>
+
+<p>Next I added buttons with debouncing capacitors, a header for the Xbee adapter, a PSP analog stick,
+and programming pins for the microcontroller.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>Buttons, analog stick, Xbee adapter header, and programming pins.</i></caption>
+<tr><td><img src="/img/schematic_2.png" alt="Buttons, analog stick, Xbee adapter header, and programming pins." /></td></tr>
+</table>
+
+<p>To power the controller I decided to use a 9 volt battery and regulate it to 5V and 3.3V.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>9 volt battery with l7805 and ld1117s33 regulators and decoupling capacitors.</i></caption>
+<tr><td><img src="/img/schematic_3.png" alt="9 volt battery with l7805 and ld1117s33 regulators and decoupling capacitors." /></td></tr>
+</table>
+
+<p>Lastly I added a status LED and decoupling capacitors for the microcontroller to finish the schematic.</p>
+
+<p>After completing the schematic I added footprints for all of the components, arranged them on a pcb, routed
+the traces, added fill areas, and added cut lines.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The pcb for the controller.</i></caption>
+<tr><td><img src="/img/pcb_1.png" alt="The pcb for the controller." /></td></tr>
+</table>
+
+<p>We ordered the pcbs and components and soldered the components on. Below is the end result. There were two big errors with this board. I forgot to cross connect the tx and rx pins on the microcontroller and the Xbee
+adapter. I was also unable to surface mount solder the PSP analog stick so I had to improvise and hot glue it on.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>The completed controller.</i></caption>
+<tr><td><img src="/img/transmitter.jpg" alt="The completed controller." /></td></tr>
+</table>
+
+<h1 id="the-car">The Car</h1>
+
+<p>I did not directly program the car, but the program was written in C by my teammates. The program sends sensory data back to the controller from the imu and infrared camera to be displayed on the screen and it receives
+movement data from the controller that is written to the motor drivers.</p>
+
+<p>We tried to create a pcb for the motor drivers, but we made mistakes when designing it that rendered the pcb unusable. Because of this mistake, we put the stm32f0discovery board on protoboard and wired it to two l298n motor drivers and another protoboard containing the imu, Xbee, and the headers for the amg8833 infrared camera.
+We also used six C batteries in two battery packs as a power supply and we used a 5V regulator to power the stm32f0discovery board.</p>
+
+<table class="image">
+<caption align="bottom" style="color: white; font-size: 12px"><i>Top view of the rover.</i></caption>
+<tr><td><img src="/img/protoboard_1.jpg" alt="Top view of the rover." /></td></tr>
+</table>
+
+<p>All of the rover electronics were mounted on a wooden plate made of laser cut 1/8 inch mdf. Motors were mounted on the bottom of the plate and fitted with wheels with rollers.</p>
+
+<h1 id="the-result">The Result</h1>
+
+<p>The rover ended up working very well. It is quite responsive and can even move diagonally. We currently have
+the rover transmitting data back to the controller about once per second. Below is a video demonstration.</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+
+<iframe src="https://www.youtube.com/embed/HscHgCjvtWk" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+</div>
+
+<p><br /></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>We were really happy with the result of this project. I have plans to improve it over the summer and convert all
+of the code to Rust. I plan on opensourcing the rover design and code once I organize the project and will post an update here when this happens.</p>
+
+<p>I had trouble finding good resources for getting started with embedded Rust. My hope for the future of this project is to create a good starting point for embedded Rust programming, so that others will have an easier time learning it than I did.</p>
+
+<p>Stay tuned for updates!</p>
+
+                    
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 hidden-xs">
+              <div class="sidebar ">
+  <h2>Recent Posts</h2>
+  <ul>
+    
+    <li><a href="/2019/09/Printed-Gauntlet/">Printed Gauntlet</a></li>
+    
+    <li><a href="/2019/09/Space-Shooter-Game/">Space Shooter Game</a></li>
+    
+    <li><a href="/2019/05/Thotcon-0xA/">Thotcon 0xA</a></li>
+    
+    <li><a href="/2019/04/Infrared-Rover-Prototype/">Infrared Rover Prototype</a></li>
+    
+  </ul>
+</div>
+
+<div class="sidebar">
+  <h2>Tags</h2>
+  <ul class="sideBarTags fa-ul">
+    
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/3d-printer" data-toggle="tooltip" data-placement="right" title="1">
+        <span>3d-printer</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amethyst" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amethyst</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/amg8833" data-toggle="tooltip" data-placement="right" title="1">
+        <span>amg8833</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/autodesk-inventor" data-toggle="tooltip" data-placement="right" title="1">
+        <span>autodesk-inventor</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/badge" data-toggle="tooltip" data-placement="right" title="1">
+        <span>badge</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/convention" data-toggle="tooltip" data-placement="right" title="1">
+        <span>convention</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/game" data-toggle="tooltip" data-placement="right" title="1">
+        <span>game</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/infosec" data-toggle="tooltip" data-placement="right" title="1">
+        <span>infosec</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/l298n" data-toggle="tooltip" data-placement="right" title="1">
+        <span>l298n</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/motors" data-toggle="tooltip" data-placement="right" title="1">
+        <span>motors</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/rust" data-toggle="tooltip" data-placement="right" title="2">
+        <span>rust</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/st7735" data-toggle="tooltip" data-placement="right" title="1">
+        <span>st7735</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/stm32" data-toggle="tooltip" data-placement="right" title="1">
+        <span>stm32</span></a>
+      </li>
+    
+    <li style="">
+      <span class="fa-li" ><i class="fas fa-tag"></i></span>
+
+      <a href="/tag/xbee" data-toggle="tooltip" data-placement="right" title="1">
+        <span>xbee</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="footer-basic" style="padding: 30px 0; background-color: #292c2f;color: white;">
+        <footer>
+            <ul class="list-inline" style="padding: 0; list-style: none; text-align: center; font-size: 12px; line-height: 1.6; margin-bottom: 15px;">
+              <a href="http://www.github.com/cdsupina" style="color: white;"><i class="fab fa-github fa-3x" style="padding: 0 10px;"></i></a>
+              <a href="https://www.youtube.com/channel/UC6cKxhWxtWCgKy9_-T8xJAg" style="color: white;"><i class="fab fa-youtube fa-3x" style="padding: 0 10px;"></i></a>
+              <i class="fab fa-linkedin fa-3x" style="padding: 0 10px;"></i>
+            </ul>
+        </footer>
+    </div>
+
+    </div>
+  </body>
+</html>
